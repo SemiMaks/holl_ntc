@@ -32,9 +32,9 @@ void setup()
    attachInterrupt(digitalPinToInterrupt(holl), flow, RISING); // Setup Interrupt
    lcd.clear();
    lcd.setCursor(0,0);
-   lcd.print("Water Meter");
+   lcd.print("Water flow measur");
    lcd.setCursor(0,1);
-   lcd.print("Circuit Digest");
+   lcd.print("Temp. measur");
    currentTime = millis();
    cloopTime = currentTime;
 }
@@ -61,12 +61,12 @@ void loop ()
       l_minute = (flow_freq / 7.5);
       lcd.clear();
       lcd.setCursor(0,0);
-      lcd.print("Rate: ");
+      lcd.print("Rat: ");
       lcd.print(l_minute);
       lcd.print(" L/M");
       l_minute = l_minute/60;
       vol = vol +l_minute;
-      lcd.print("Vol:");
+      lcd.print("V:");
       lcd.print(vol);
       lcd.print(" L");      
       lcd.setCursor(0,1);
@@ -74,16 +74,16 @@ void loop ()
       lcd.print(temp_ntc);
       flow_freq = 0; // сбрасываем счетчик
       Serial.print(l_minute, DEC);
-      Serial.println(" L/Sec");
+      Serial.println(" L/S");
     }
     else {
       Serial.println(" flow rate = 0 ");
       lcd.clear();
-      lcd.print("Rate: ");
+      lcd.print("Rat: ");
       lcd.print( flow_freq);
       lcd.print(" L/M");
       lcd.setCursor(0,1);
-      lcd.print("Vol:");
+      lcd.print("V:");
       lcd.print(vol);
       lcd.print(" L");      
       lcd.setCursor(0,0);
